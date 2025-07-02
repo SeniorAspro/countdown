@@ -40,6 +40,7 @@
 }
 
 const sentences = [
+    "It's the choosing thats important, isn't it?",
     "Some places don't just exist. They remember you back.",
     "Aşk Bodrum’da yaşanıyor güzelim, Bodrum bana ben Bodrum’a özelim, senin ile cehenneme giderim. Hayat güzel devam ediyor.",
     "Bir mevsim, bir ay değil her gün, 24 saat Bodrum.",
@@ -54,15 +55,21 @@ const sentences = [
     "Sunset is your new stage light."
 ];
 
-let lastSentence = "";
 
-function randomize() {
-    let sentence;
-    do {
-        sentence = sentences[Math.floor(Math.random() * sentences.length)];
-    } while (sentence === lastSentence);
-    lastSentence = sentence;
-    return sentence;
+let lastSentence = "";
+let usedlines = [];
+
+function randomsentence() {
+    // If all lines are used, reset the usedline counter
+    if (usedlines.length === sentences.length) {
+        usedlines = [];
+    }
+
+    let counter = Math.floor(Math.random() * sentences.length);
+    if (!usedlines.includes(counter)) {
+        usedlines.push(counter);
+        return sentences[counter];
+    } else return randomsentence();
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -71,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Click event for #liner
     document.getElementById('liner').addEventListener('click', () => {
-        const newSentence = randomize();
+        const newSentence = randomsentence();
         document.getElementById('msg').innerHTML = newSentence;
     });
 });
