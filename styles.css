@@ -4,7 +4,7 @@ html, body {
     font-family:'Poppins';
     margin: 0;
     padding: 0;
-    background-image: url('/photos/beach.webp');
+    background-image: url('photos/beach.webp');
     background-size: cover;
     background-position: center center; 
     height: 100dvh;
