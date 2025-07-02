@@ -52,16 +52,26 @@ const sentences = [
     "Ocean’s loud. I’m louder.",
     "Bodrum doesn’t ask who you are. It hands you a drink and a second chance.",
     "Sunset is your new stage light."
-]
+];
+
+let lastSentence = "";
+
+function randomize() {
+    let sentence;
+    do {
+        sentence = sentences[Math.floor(Math.random() * sentences.length)];
+    } while (sentence === lastSentence);
+    lastSentence = sentence;
+    return sentence;
+}
 
 document.addEventListener('DOMContentLoaded', function () {
-
     updateCounter();
-
     setInterval(updateCounter, 1000);
 
-    const randomSentence = sentences[Math.floor(Math.random() * sentences.length)];
-
-    console.log(randomSentence);
-
-  });
+    // Click event for #liner
+    document.getElementById('liner').addEventListener('click', () => {
+        const newSentence = randomize();
+        document.getElementById('msg').innerHTML = newSentence;
+    });
+});
