@@ -1,7 +1,7 @@
   function updateCounter() {
         
     const now = new Date();
-    const arrival = new Date("2025-07-11T00:00:00");
+    const arrival = new Date("2025-08-11T12:00:00");
 
     let years = arrival.getFullYear() - now.getFullYear();
     let months = arrival.getMonth() - now.getMonth();
@@ -32,6 +32,8 @@
         months += 12;
         years--;
     }    
+
+    days += months * 30;
 
     document.getElementById('days').innerHTML = `${days}`;
     document.getElementById('hours').innerHTML = `${hours}`;

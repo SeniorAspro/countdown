@@ -14,12 +14,17 @@ html, body {
     overscroll-behavior: none;
 }
 
+.main {
+    position: relative;
+    overflow: hidden;
+}
 
 .hero-container {
     height: 100dvh; /* 100% dü */
+    position: relative;
     display: flex;
     flex-direction: column;
-
+    overflow: hidden;
     /* justify-content: space-evenly; yoktu */
     align-items: center;
 }
@@ -56,7 +61,7 @@ html, body {
 
 .important-message {
     padding: 0.25rem 0.5rem 0.25rem;
-    background-color: rgba(122, 255, 237, 0.12);
+    background-color: rgba(136, 244, 229, 0.36);
     margin: auto;
     width: 100%;
     box-sizing: border-box;
@@ -65,8 +70,8 @@ html, body {
 .important-message p {
     font-family: "Grenze", serif;
     font-size: clamp(1.4rem, 2.9vh, 1.9rem);
-    color: rgb(9, 45, 48);
-    opacity: 0.9;
+    color: rgb(6, 36, 39);
+    opacity: 0.95;
     padding: 0.3rem 0.6rem 0.3rem;
     text-align: center;
     overflow-wrap: break-word;   /* Break long words */
@@ -85,11 +90,44 @@ html, body {
     transition: none;
 }
 
+/* #tree1 {
+    position: absolute;
+    top: 0;
+    left: 20vw;
+    height: auto;
+    width: auto;
+    max-height: none;
+    object-fit: contain;
+    z-index: 1;
+} */
+
+#tree1 {
+    transform-style: preserve-3d;
+    height: clamp(55rem, 165vh, 90rem); /* 1360px */
+    width: auto;
+    position: absolute;
+    bottom: -35%;
+    left: 0;
+    transform: translateX(-40%);
+    transform-origin: bottom center;
+    animation: sway3dcombo 4s ease-in-out infinite;
+    perspective: 1000px;
+    overflow: hidden;
+    opacity: 0.95;
+}
+@keyframes sway3dcombo {
+    0% {transform: translateX(-63%) rotateZ(43deg) rotateY(-3deg) rotateX(2deg);}
+    50% {transform: translateX(-64%) rotateZ(37deg) rotateY(2deg) rotateX(-2deg);}
+    100% {transform: translateX(-63%) rotateZ(43deg) rotateY(-3deg) rotateX(2deg);}
+}
 
 
 @media (max-width: 768px) {
     body {
       background-image: url('photos/flamingo.webp');
+    }
+    #tree1 {
+        display: none;
     }
     .countdown-text {
         padding: 3.5rem 0 0;
